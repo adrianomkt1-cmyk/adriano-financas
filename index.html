@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planilha de Controle Financeiro GrÃ¡tis â Adriano Santos</title>
+<meta name="description" content="Baixe grÃ¡tis a Planilha de Controle Financeiro do Adriano Santos | Planejador Financeiro">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,~:before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--verde:#1A5C38;--verde2:#2E8B57;--verde-cl:#D6F0E0;--ouro:#C8960C;--ouro-cl:#FFF3CC;--bg:#0C1810;--bg2:#111E14;--card:#162019;--borda:#243028;--texto:#E8F0EA;--texto2:#8BA898;--branco:#FFFFFF}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--texto);line-height:1.6;min-height:100vh}
+</style>
+</head>
+<body>
+<section style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 20px;background:var(--bg)">
+<p style="color:var(--ouro);font-size:13px;margin-bottom:14px">Adriano Santos | Planejador Financeiro</p>
+<h1 style="font-size:clamp(32px,7vw,64px);font-weight:900;color:#fff;margin-bottom:24px;line-height:1.1">Pare de perder dinheiro sem saber<br><span style="color:var(--verde2)">para onde ele vai</span></h1>
+<p style="color:var(--texto2);max-width:520px;margin:0 auto 40px">Baixe a planilha de controle financeiro gratis que jÃ¡ ajudou mais de 9 mil brasileiros.</p>
+<div style="max-width:520px;width:100%;background:#162019;border:1px solid #243028;border-radius:24px;padding:40px;position:relative">
+<div style="position:absolute;top:0;left:0;right:0;height:3;background:linear-gradient(90deg,#1A5C38,var(--ouro));border-radius:24px 24px 0 0"></div>
+<p style="color:var(--verde2);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">â¨ Acesso 100% gratuito</p>
+<h2 style="font-size:clamp(22px,4vw,30px);font-weight:900;color:#fff;margin-bottom:8px;line-height:1.2">Quero minha planilha<br>de controle financeiro</h2>
+<p style="color:var(--texto2);font-size:14px;margin-bottom:32px">Preencha abaixo e receba o link imediatamente no seu WhatsApp.</p>
+<div style="margin-bottom:16px;text-align:left">
+<label style="display:block;font-size:12px;font-weight:600;color:#8BA898;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Seu nome completo</label>
+<input type="text" id="nome" placeholder="Ex: JoÃ£o Silva" style="width:100%;background:rgba(255,255,255,0.04);border:1.5px solid #243028;border-radius:12px;padding:14px 18px;font-size:15px;font-family:Inter;color:#E8F0EA;outline:none">
+</div>
+<div style="margin-bottom:16px;text-align:left">
+<label style="display:block;font-size:12px;font-weight:600;color:#8BA898;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">WhatsApp (com DDD)</label>
+<input type="tel" id="whatsapp" placeholder="Ex: (11) 99999-0000" style="width:100%;background:rgba(255,255,255,0.04);border:1.5px solid #243028;border-radius:12px;padding:14px 18px;font-size:15px;font-family:Inter;color:#E8F0EA;outline:none">
+</div>
+<div style="margin-bottom:16px;text-align:left">
+<label style="display:block;font-size:12px;font-weight:600;color:#8BA898;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">E-mail <span style="font-weight:400;text-transform:none">(opcional)</span></label>
+<input type="email" id="email" placeholder="Ex: joao@email.com" style="width:100%;background:rgba(255,255,255,0.04);border:1.5px solid #243028;border-radius:12px;padding:14px 18px;font-size:15px;font-family:Inter;color:#E8F0EA;outline:none">
+</div>
+<button onclick="enviar()" style="width:100%;background:linear-gradient(135deg,#1A5C38,#2E8B57);color:#fff;border:none;border-radius:14px;padding:18px;font-size:16px;font-weight:800;font-family:Inter;cursor:pointer;margin-top:8px;box-shadow:0 8px 24px rgba(26,92,56,0.4)">Baixar planilha grÃ¡tis â</button>
+<p style="font-size:11px;color:rgba(139,168,152,0.6);text-align:center;margin-top:16px">ð Seus dados sÃ£o 100% seguros. Sem spam.</p>
+</div>
+</div>
+</section>
+<footer style="background:#111E14;border-top:1px solid #243028;padding:32px 20px;text-align:center;font-size:13px;color:#8BA898">
+Criado por <a href="https://instagram.com/adrianosantos_pf" style="color:#2E8B57;font-weight:600">@adrianosantos_pf</a> â Adriano Santos | Planejador Financeiro
+</footer>
+<script>
+document.getElementById('whatsapp').addEventListener('input',function(e){let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>=2)v='('+v.slice(0,2)+') '+v.slice(2);if(v.length>=10)v=v.slice(0,10)+'-'+v.slice(10);e.target.value=v});
+async function enviar(){
+const n=document.getElementById('nome').value.trim();
+const w=document.getElementById('whatsapp').value.replace(/\D/g,'');
+if(!n||n.length<3){alert('Por favor, informe seu nome.');return}
+if(w.length<10){alert('Informe um WhatsApp vÃ¡lido com DDD.');return}
+const payload={nome:n,whatsapp:document.getElementById('whatsapp').value.trim(),email:document.getElementById('email').value.trim(),origem:'Instagram Bio',data:new Date().toLocaleDateString('pt-BR'),horarionome:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),timestamp:new Date().toISOString()};
+try{await fetch('https://script.google.com/macros//s/AKfycbzF_YlMH6qFf9-sfSWuMjfnQzqj4tOGBlcUEYq0HOZIjRsSMk2LB297wt8recxGYXLbQQ/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})}catch(e){}
+await new Promise(r=>setTimeout(r,1200));
+document.body.innerHTML=`<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;background:#0C1810;color:#E8F0EA;font-family:Inter,sans-serif"><div style="width:80px;height:80px;background:#D6F0E0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 20px">â</div><h2 style="font-size:24px;font-weight:800;color:#fff;margin-bottom:10px">Perfeito! TÃ¡ na sua mÃ£o.</h2><p style="color:#8BA898;margin-bottom:24px">Clique no botÃ£o abaixo para baixar sua planilha.</p><a href="https://docs.google.com/spreadsheets/d/1p7IWBsTHfLOQVQQBFEIlKEhun0nEO6w5/export?format=xlsx" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#C8960C;color:#1A1200;border:none;border-radius:14px;padding:16px 28px;font-size:15px;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(200,150,12,0.35)">ð¥ Baixar planilha agora</a><br><a href="https://instagram.com/adrianosantos_pf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;border:none;border-radius:14px;padding:14px 24px;font-size:14px;font-weight:700;text-decoration:none;margin-top:12px">ð± Seguir @mende adrianosantos_pf</a></div>`;}
+</script>
+</body>
+</html>
