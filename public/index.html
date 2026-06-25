@@ -566,67 +566,19 @@ a { color: inherit; text-decoration: none; }
   gap: 12px;
 }
 
-.depo-inicial {
-  width: 42px;
-  height: 42px;
+.depo-avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: var(--verde);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 16px;
-  color: var(--branco);
+  overflow: hidden;
   flex-shrink: 0;
+  border: 2px solid var(--borda);
 }
+
+.depo-avatar svg { width: 100%; height: 100%; display: block; }
 
 .depo-nome { font-size: 14px; font-weight: 700; color: var(--texto); }
 .depo-desc { font-size: 12px; color: var(--texto2); margin-top: 2px; }
-
-/* ── CTA FINAL ── */
-.cta-final {
-  padding: 100px 20px;
-  text-align: center;
-  border-top: 1px solid var(--borda);
-  background: radial-gradient(ellipse 80% 100% at 50% 100%, rgba(26,92,56,0.18) 0%, transparent 70%);
-}
-
-.cta-final h2 {
-  font-size: clamp(30px, 5vw, 48px);
-  font-weight: 900;
-  color: var(--branco);
-  margin-bottom: 14px;
-  letter-spacing: -.02em;
-  line-height: 1.1;
-}
-
-.cta-final p {
-  color: var(--texto2);
-  font-size: 17px;
-  margin-bottom: 40px;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.btn-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #1A6640, #2E8B57);
-  color: var(--branco);
-  border-radius: 14px;
-  padding: 19px 40px;
-  font-size: 17px;
-  font-weight: 800;
-  text-decoration: none;
-  box-shadow: 0 8px 24px rgba(26,92,56,0.45);
-  transition: transform .15s, box-shadow .15s;
-  letter-spacing: -.01em;
-}
-
-.btn-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(26,92,56,0.55); }
-.btn-cta svg { width: 18px; height: 18px; }
 
 /* ── FOOTER ── */
 footer {
@@ -859,6 +811,8 @@ footer a:hover { text-decoration: underline; }
   <p class="section-sub">Sem promessa de enriquecimento rápido. Só controle, clareza e resultado.</p>
 
   <div class="grid-3">
+
+    <!-- Depoimento 1 — Mariana, 5 estrelas, SP capital -->
     <div class="depo">
       <div class="depo-stars">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -869,32 +823,100 @@ footer a:hover { text-decoration: underline; }
       </div>
       <p>"Nunca tinha conseguido entender para onde meu salário ia. Com a planilha do Adriano, em 30 dias já sobrou dinheiro pela primeira vez em anos."</p>
       <div class="depo-autor">
-        <div class="depo-inicial">M</div>
+        <div class="depo-avatar">
+          <!-- Mariana: mulher, pele clara-média, cabelo escuro liso -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" fill="#C8956A"/>
+            <!-- cabelo -->
+            <ellipse cx="24" cy="13" rx="13" ry="12" fill="#2C1A0E"/>
+            <rect x="11" y="13" width="26" height="10" fill="#2C1A0E"/>
+            <!-- rosto -->
+            <ellipse cx="24" cy="22" rx="11" ry="12" fill="#D4A57A"/>
+            <!-- cabelo lateral -->
+            <ellipse cx="13" cy="22" rx="3" ry="8" fill="#2C1A0E"/>
+            <ellipse cx="35" cy="22" rx="3" ry="8" fill="#2C1A0E"/>
+            <!-- olhos -->
+            <ellipse cx="20" cy="20" rx="2" ry="2.2" fill="#fff"/>
+            <ellipse cx="28" cy="20" rx="2" ry="2.2" fill="#fff"/>
+            <ellipse cx="20" cy="20.5" rx="1.2" ry="1.3" fill="#3D1F0A"/>
+            <ellipse cx="28" cy="20.5" rx="1.2" ry="1.3" fill="#3D1F0A"/>
+            <!-- sobrancelhas -->
+            <path d="M17.5 17.2 Q20 16.4 22.5 17.2" stroke="#2C1A0E" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <path d="M25.5 17.2 Q28 16.4 30.5 17.2" stroke="#2C1A0E" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <!-- nariz -->
+            <path d="M23 23 Q24 25 25 23" stroke="#B8895A" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+            <!-- boca sorrindo -->
+            <path d="M20.5 27 Q24 30 27.5 27" stroke="#9A5A3A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <!-- pescoço e corpo -->
+            <rect x="20" y="33" width="8" height="6" fill="#D4A57A"/>
+            <rect x="10" y="38" width="28" height="10" fill="#3B6E52"/>
+          </svg>
+        </div>
         <div>
           <div class="depo-nome">Mariana C.</div>
-          <div class="depo-desc">São Paulo · Professora</div>
+          <div class="depo-desc">São Paulo, SP · Professora</div>
         </div>
       </div>
     </div>
 
+    <!-- Depoimento 2 — Ricardo, 4.5 estrelas, Guarulhos -->
     <div class="depo">
       <div class="depo-stars">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <!-- meia estrela -->
+        <svg viewBox="0 0 24 24">
+          <defs>
+            <linearGradient id="half">
+              <stop offset="50%" stop-color="#C8960C"/>
+              <stop offset="50%" stop-color="#243028"/>
+            </linearGradient>
+          </defs>
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="url(#half)"/>
+        </svg>
       </div>
-      <p>"Simples, direta e funciona de verdade. Não precisa saber nada de Excel. Comecei na segunda, na sexta já sabia exatamente o que estava gastando a mais."</p>
+      <p>"Simples, direta e funciona de verdade. Não precisei saber nada de Excel. Na primeira semana já sabia exatamente para onde estava indo meu dinheiro."</p>
       <div class="depo-autor">
-        <div class="depo-inicial">R</div>
+        <div class="depo-avatar">
+          <!-- Ricardo: homem, pele morena escura, cabelo curto -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" fill="#6B3A1F"/>
+            <!-- cabelo curto -->
+            <ellipse cx="24" cy="13" rx="12" ry="10" fill="#1A0E06"/>
+            <rect x="12" y="13" width="24" height="6" fill="#1A0E06"/>
+            <!-- rosto -->
+            <ellipse cx="24" cy="23" rx="11" ry="12" fill="#8B5A2B"/>
+            <!-- olhos -->
+            <ellipse cx="20" cy="21" rx="2" ry="2.2" fill="#fff"/>
+            <ellipse cx="28" cy="21" rx="2" ry="2.2" fill="#fff"/>
+            <ellipse cx="20" cy="21.5" rx="1.3" ry="1.3" fill="#1A0E06"/>
+            <ellipse cx="28" cy="21.5" rx="1.3" ry="1.3" fill="#1A0E06"/>
+            <!-- sobrancelhas grossas -->
+            <path d="M17 17.5 Q20 16.5 22.5 17.5" stroke="#1A0E06" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M25.5 17.5 Q28 16.5 31 17.5" stroke="#1A0E06" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <!-- nariz mais largo -->
+            <path d="M22.5 24 Q24 26.5 25.5 24" stroke="#6B3A1F" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <ellipse cx="22" cy="25" rx="1.5" ry="1" fill="#6B3A1F"/>
+            <ellipse cx="26" cy="25" rx="1.5" ry="1" fill="#6B3A1F"/>
+            <!-- boca -->
+            <path d="M20.5 28.5 Q24 31.5 27.5 28.5" stroke="#5A2D10" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <!-- barba leve -->
+            <path d="M13 28 Q24 36 35 28" stroke="#1A0E06" stroke-width="0.5" fill="rgba(26,14,6,0.15)" stroke-linecap="round"/>
+            <!-- pescoço e corpo -->
+            <rect x="20" y="34" width="8" height="5" fill="#8B5A2B"/>
+            <rect x="10" y="38" width="28" height="10" fill="#1A3A5C"/>
+          </svg>
+        </div>
         <div>
           <div class="depo-nome">Ricardo S.</div>
-          <div class="depo-desc">Belo Horizonte · Autônomo</div>
+          <div class="depo-desc">Guarulhos, SP · Autônomo</div>
         </div>
       </div>
     </div>
 
+    <!-- Depoimento 3 — Fernanda, 5 estrelas, Campinas -->
     <div class="depo">
       <div class="depo-stars">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -903,27 +925,48 @@ footer a:hover { text-decoration: underline; }
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </div>
-      <p>"Estava no cheque especial há 3 meses. Depois que comecei a usar a planilha e seguir os conselhos do Adriano, saí em 2 meses. Recomendo demais."</p>
+      <p>"Estava no cheque especial há 3 meses. Depois que comecei a usar a planilha e seguir os conselhos do Adriano, saí da dívida em 2 meses. Recomendo demais."</p>
       <div class="depo-autor">
-        <div class="depo-inicial">F</div>
+        <div class="depo-avatar">
+          <!-- Fernanda: mulher, pele morena clara, cabelo cacheado -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" fill="#A0611A"/>
+            <!-- cabelo cacheado (fundo) -->
+            <ellipse cx="24" cy="11" rx="14" ry="11" fill="#3D1F0A"/>
+            <ellipse cx="12" cy="18" rx="5" ry="9" fill="#3D1F0A"/>
+            <ellipse cx="36" cy="18" rx="5" ry="9" fill="#3D1F0A"/>
+            <ellipse cx="14" cy="12" rx="5" ry="7" fill="#3D1F0A"/>
+            <ellipse cx="34" cy="12" rx="5" ry="7" fill="#3D1F0A"/>
+            <!-- rosto -->
+            <ellipse cx="24" cy="24" rx="11" ry="12" fill="#C27A4A"/>
+            <!-- cachos nas laterais sobre o rosto -->
+            <ellipse cx="13.5" cy="22" rx="2.5" ry="5" fill="#3D1F0A"/>
+            <ellipse cx="34.5" cy="22" rx="2.5" ry="5" fill="#3D1F0A"/>
+            <!-- olhos -->
+            <ellipse cx="20" cy="22" rx="2" ry="2.2" fill="#fff"/>
+            <ellipse cx="28" cy="22" rx="2" ry="2.2" fill="#fff"/>
+            <ellipse cx="20" cy="22.5" rx="1.2" ry="1.3" fill="#3D1F0A"/>
+            <ellipse cx="28" cy="22.5" rx="1.2" ry="1.3" fill="#3D1F0A"/>
+            <!-- sobrancelhas arqueadas -->
+            <path d="M17.5 18.5 Q20 17.2 22.5 18.5" stroke="#3D1F0A" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <path d="M25.5 18.5 Q28 17.2 30.5 18.5" stroke="#3D1F0A" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+            <!-- nariz -->
+            <path d="M22.5 25 Q24 27 25.5 25" stroke="#A0611A" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+            <!-- boca sorrindo amplo -->
+            <path d="M20 29 Q24 33 28 29" stroke="#8B4513" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <!-- pescoço e roupa -->
+            <rect x="20" y="35" width="8" height="5" fill="#C27A4A"/>
+            <rect x="10" y="39" width="28" height="10" fill="#8B2252"/>
+          </svg>
+        </div>
         <div>
           <div class="depo-nome">Fernanda L.</div>
-          <div class="depo-desc">Porto Alegre · CLT</div>
+          <div class="depo-desc">Campinas, SP · CLT</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ══════════════════ CTA FINAL ══════════════════ -->
-<section class="cta-final">
-  <h2>Chega de mês acabando<br>antes do dinheiro.</h2>
-  <p>Baixe a planilha agora. É grátis, é simples e pode mudar sua relação com o dinheiro a partir de hoje.</p>
-  <a href="#topo" class="btn-cta">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Quero minha planilha grátis
-  </a>
-  <p style="color:var(--texto2);font-size:12px;margin-top:20px;margin-bottom:0;">Sem cartão de crédito. Sem assinatura. 100% grátis.</p>
+  </div>
 </section>
 
 <!-- ══════════════════ FOOTER ══════════════════ -->
