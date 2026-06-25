@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sua planilha está pronta — Adriano Santos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --verde:    #1A5C38;
+  --verde2:   #2E8B57;
+  --verde-cl: #D6F0E0;
+  --ouro:     #C8960C;
+  --bg:       #0C1810;
+  --bg2:      #111E14;
+  --card:     #162019;
+  --borda:    #243028;
+  --texto:    #E8F0EA;
+  --texto2:   #8BA898;
+  --branco:   #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--texto);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,92,56,0.25) 0%, transparent 65%),
+    var(--bg);
+}
+
+.check-wrap {
+  width: 88px;
+  height: 88px;
+  background: rgba(46,139,87,0.12);
+  border: 2px solid rgba(46,139,87,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  color: var(--verde2);
+  animation: pop .4s ease;
+}
+
+.check-wrap svg { width: 40px; height: 40px; }
+
+@keyframes pop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(200,150,12,0.1);
+  border: 1px solid rgba(200,150,12,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ouro);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(30px, 6vw, 52px);
+  font-weight: 900;
+  color: var(--branco);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: -.02em;
+}
+
+h1 span { color: var(--verde2); }
+
+.sub {
+  color: var(--texto2);
+  font-size: 16px;
+  max-width: 440px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ouro);
+  color: #1A1000;
+  border-radius: 14px;
+  padding: 18px 36px;
+  font-size: 17px;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(200,150,12,0.4);
+  transition: transform .15s, box-shadow .15s;
+  margin-bottom: 14px;
+  letter-spacing: -.01em;
+}
+
+.btn-download:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(200,150,12,0.5); }
+.btn-download svg { width: 20px; height: 20px; }
+
+.btn-insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1.5px solid var(--borda);
+  color: var(--texto2);
+  border-radius: 14px;
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+
+.btn-insta:hover { border-color: var(--verde2); color: var(--verde2); }
+.btn-insta svg { width: 18px; height: 18px; }
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.passos {
+  margin-top: 52px;
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 32px 36px;
+  max-width: 480px;
+  width: 100%;
+  text-align: left;
+}
+
+.passos h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto2);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 20px;
+}
+
+.passo {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.passo:last-child { margin-bottom: 0; }
+
+.passo-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(46,139,87,0.12);
+  border: 1px solid rgba(46,139,87,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--verde2);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.passo-texto {
+  font-size: 14px;
+  color: var(--texto2);
+  line-height: 1.55;
+}
+
+.passo-texto strong { color: var(--texto); }
+
+footer {
+  margin-top: 48px;
+  font-size: 12px;
+  color: rgba(139,168,152,0.45);
+}
+
+footer a { color: var(--verde2); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 480px) {
+  .passos { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="check-wrap">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+</div>
+
+<div class="tag">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+  Tudo certo!
+</div>
+
+<h1 id="titulo">Sua planilha<br>está <span>pronta.</span></h1>
+
+<p class="sub">
+  Clique no botão abaixo para baixar. É só abrir no Excel ou no Google Planilhas e começar hoje mesmo.
+</p>
+
+<div class="btns">
+  <a class="btn-download" href="https://docs.google.com/spreadsheets/d/18M9fv1uTHLiGuD-TCUa0NT4NmcxqKCVs/export?format=xlsx" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Baixar planilha agora
+  </a>
+
+  <a class="btn-insta" href="https://instagram.com/adrianosantos_pf" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    Seguir @adrianosantos_pf para mais dicas
+  </a>
+</div>
+
+<div class="passos">
+  <h3>Próximos passos</h3>
+
+  <div class="passo">
+    <div class="passo-num">1</div>
+    <div class="passo-texto"><strong>Baixe a planilha</strong> e abra no Excel ou Google Planilhas. Funciona nos dois.</div>
+  </div>
+
+  <div class="passo">
+    <div class="passo-num">2</div>
+    <div class="passo-texto"><strong>Lance suas entradas e saídas</strong> do mês atual. Leva menos de 10 minutos.</div>
+  </div>
+
+  <div class="passo">
+    <div class="passo-num">3</div>
+    <div class="passo-texto"><strong>Veja o diagnóstico automático</strong> e descubra para onde seu dinheiro vai todo mês.</div>
+  </div>
+
+  <div class="passo">
+    <div class="passo-num">4</div>
+    <div class="passo-texto"><strong>Siga o @adrianosantos_pf</strong> no Instagram para dicas semanais de como ir além da planilha.</div>
+  </div>
+</div>
+
+<footer>
+  <a href="/">Voltar ao início</a> &nbsp;·&nbsp;
+  Criado por <a href="https://instagram.com/adrianosantos_pf" target="_blank">@adrianosantos_pf</a>
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const nome = params.get('nome');
+  if (nome) {
+    document.getElementById('titulo').innerHTML =
+      nome + ',<br>sua planilha<br>está <span style="color:var(--verde2)">pronta.</span>';
+  }
+</script>
+
+</body>
+</html>
