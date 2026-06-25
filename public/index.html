@@ -37,9 +37,60 @@ body {
   color: var(--texto);
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a { color: inherit; text-decoration: none; }
+
+/* ── AURORA BACKGROUND ── */
+@keyframes aurora {
+  0%   { transform: translate(0%, 0%) rotate(0deg) scale(1); opacity: .5; }
+  33%  { transform: translate(3%, -4%) rotate(60deg) scale(1.08); opacity: .7; }
+  66%  { transform: translate(-3%, 3%) rotate(120deg) scale(.95); opacity: .55; }
+  100% { transform: translate(0%, 0%) rotate(0deg) scale(1); opacity: .5; }
+}
+
+@keyframes aurora2 {
+  0%   { transform: translate(0%, 0%) rotate(0deg) scale(1.05); opacity: .4; }
+  50%  { transform: translate(-5%, 3%) rotate(-90deg) scale(.92); opacity: .6; }
+  100% { transform: translate(0%, 0%) rotate(0deg) scale(1.05); opacity: .4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes borderRotate {
+  to { --angle: 360deg; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(46,139,87,0); }
+  50%       { box-shadow: 0 0 24px 6px rgba(46,139,87,0.18); }
+}
+
+@keyframes badgeShimmer {
+  0%   { background-position: -300% center; }
+  100% { background-position: 300% center; }
+}
 
 /* ── HERO ── */
 .hero {
@@ -50,26 +101,71 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   text-align: center;
   padding: 72px 20px 80px;
-  background:
-    radial-gradient(ellipse 100% 50% at 50% -10%, rgba(26,92,56,0.35) 0%, transparent 65%),
-    var(--bg);
   position: relative;
   overflow: hidden;
+  background: var(--bg);
 }
 
-.hero::before {
-  content: '';
+.aurora-wrap {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232E8B57' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  overflow: hidden;
   pointer-events: none;
+}
+
+.aurora-1 {
+  position: absolute;
+  top: -30%;
+  left: 10%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(26,92,56,0.38) 0%, transparent 70%);
+  animation: aurora 14s ease-in-out infinite;
+  filter: blur(40px);
+}
+
+.aurora-2 {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(46,139,87,0.18) 0%, transparent 65%);
+  animation: aurora2 18s ease-in-out infinite;
+  filter: blur(50px);
+}
+
+.aurora-3 {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(ellipse, rgba(200,150,12,0.08) 0%, transparent 65%);
+  animation: aurora 22s ease-in-out infinite reverse;
+  filter: blur(60px);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46,139,87,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,139,87,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(200,150,12,0.1);
+  background: linear-gradient(90deg,
+    rgba(200,150,12,0.08) 0%,
+    rgba(200,150,12,0.18) 40%,
+    rgba(200,150,12,0.08) 80%,
+    rgba(200,150,12,0.18) 100%);
+  background-size: 300% auto;
   border: 1px solid rgba(200,150,12,0.35);
   border-radius: 100px;
   padding: 7px 18px;
@@ -80,19 +176,11 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   margin-bottom: 32px;
   position: relative;
+  animation: badgeShimmer 4s linear infinite, fadeUp .6s ease both;
+  animation-delay: 0s, .1s;
 }
 
-.badge svg { width: 14px; height: 14px; }
-
-.hero-eyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--verde2);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  position: relative;
-}
+.badge svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 .hero h1 {
   font-size: clamp(38px, 7.5vw, 76px);
@@ -101,24 +189,28 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.05;
   margin-bottom: 12px;
   max-width: 860px;
-  letter-spacing: -.02em;
+  letter-spacing: -.025em;
   position: relative;
+  animation: fadeUp .7s ease both .2s;
 }
 
-.hero h1 .destaque {
-  color: transparent;
-  -webkit-text-stroke: 2px var(--verde2);
+.hero h1 .verde {
+  background: linear-gradient(135deg, #2E8B57 0%, #4fd48a 50%, #2E8B57 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
 }
-
-.hero h1 .verde { color: var(--verde2); }
 
 .hero-sub {
   color: var(--texto2);
   font-size: clamp(16px, 2.2vw, 19px);
   max-width: 560px;
   margin: 16px auto 48px;
-  line-height: 1.6;
+  line-height: 1.65;
   position: relative;
+  animation: fadeUp .7s ease both .35s;
 }
 
 .hero-prova {
@@ -129,6 +221,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 56px;
   position: relative;
   flex-wrap: wrap;
+  animation: fadeUp .7s ease both .45s;
 }
 
 .prova-item {
@@ -140,31 +233,36 @@ a { color: inherit; text-decoration: none; }
 }
 
 .prova-item svg { color: var(--verde2); width: 16px; height: 16px; flex-shrink: 0; }
-
 .prova-sep { width: 1px; height: 16px; background: var(--borda); }
 
-/* ── MOCKUP DA PLANILHA ── */
+/* ── MOCKUP ── */
 .mockup-wrap {
   position: relative;
   max-width: 500px;
   width: 100%;
   margin: 0 auto 60px;
+  animation: scaleIn .8s ease both .5s, float 6s ease-in-out infinite 1.5s;
 }
 
 .mockup-glow {
   position: absolute;
   inset: -40px;
-  background: radial-gradient(ellipse at center, rgba(46,139,87,0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(46,139,87,0.2) 0%, transparent 70%);
   pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite;
 }
 
 .mockup {
-  background: var(--card);
-  border: 1px solid var(--borda);
+  background: rgba(22,32,25,0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(46,139,87,0.2);
   border-radius: 16px;
   padding: 20px 24px;
   text-align: left;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(46,139,87,0.1);
+  box-shadow:
+    0 32px 80px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(46,139,87,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.04);
   position: relative;
 }
 
@@ -203,6 +301,7 @@ a { color: inherit; text-decoration: none; }
   padding: 9px 10px;
   font-size: 11px;
   color: var(--texto2);
+  transition: background .2s;
 }
 
 .mockup-cell.header {
@@ -218,16 +317,38 @@ a { color: inherit; text-decoration: none; }
 .mockup-cell.red { color: #EF5350; }
 .mockup-cell.gold { color: var(--ouro); font-weight: 700; background: rgba(200,150,12,0.06); }
 
-/* ── FORMULÁRIO ── */
-.form-wrap {
+/* ── FORMULÁRIO com borda gradiente animada ── */
+.form-outer {
   max-width: 520px;
   width: 100%;
+  position: relative;
+  animation: fadeUp .8s ease both .6s;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.form-outer::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 25px;
+  background: conic-gradient(from var(--angle), #1A5C38, #2E8B57, #C8960C, #2E8B57, #1A5C38);
+  animation: borderRotate 4s linear infinite;
+  z-index: 0;
+  opacity: .7;
+}
+
+.form-wrap {
+  position: relative;
+  z-index: 1;
   background: var(--card);
-  border: 1px solid var(--borda);
   border-radius: 24px;
   padding: 40px;
-  position: relative;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(46,139,87,0.08);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 .form-bar {
@@ -290,11 +411,17 @@ a { color: inherit; text-decoration: none; }
   font-family: 'Inter', sans-serif;
   color: var(--texto);
   outline: none;
-  transition: border-color .2s, box-shadow .2s;
+  transition: border-color .2s, box-shadow .2s, background .2s;
 }
 
 .field input::placeholder { color: rgba(139,168,152,0.5); }
-.field input:focus { border-color: var(--verde2); box-shadow: 0 0 0 3px rgba(46,139,87,0.12); }
+
+.field input:focus {
+  border-color: var(--verde2);
+  box-shadow: 0 0 0 3px rgba(46,139,87,0.15);
+  background: rgba(46,139,87,0.04);
+}
+
 .field input.erro { border-color: var(--vermelho); box-shadow: 0 0 0 3px rgba(239,83,80,0.12); }
 
 .erro-msg {
@@ -307,8 +434,11 @@ a { color: inherit; text-decoration: none; }
 
 .field input.erro + .erro-msg { display: block; }
 
+/* Botão com efeito shine */
 .btn-submit {
   width: 100%;
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(135deg, #1A6640, #2E8B57);
   color: var(--branco);
   border: none;
@@ -319,24 +449,35 @@ a { color: inherit; text-decoration: none; }
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   margin-top: 8px;
-  box-shadow: 0 8px 24px rgba(26,92,56,0.45), inset 0 1px 0 rgba(255,255,255,0.1);
-  transition: transform .15s, box-shadow .15s, background .2s;
+  box-shadow: 0 8px 24px rgba(26,92,56,0.45), inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: transform .15s, box-shadow .15s;
   letter-spacing: -.01em;
+}
+
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-20deg);
+  animation: btnShine 3s ease-in-out infinite 2s;
+}
+
+@keyframes btnShine {
+  0%   { left: -100%; }
+  40%  { left: 150%; }
+  100% { left: 150%; }
 }
 
 .btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(26,92,56,0.55);
-  background: linear-gradient(135deg, #1e7348, #34a064);
+  box-shadow: 0 14px 36px rgba(26,92,56,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 .btn-submit:active { transform: translateY(0); }
-
-.btn-submit:disabled {
-  opacity: .7;
-  cursor: not-allowed;
-  transform: none;
-}
+.btn-submit:disabled { opacity: .7; cursor: not-allowed; transform: none; }
 
 .btn-submit .spinner {
   display: none;
@@ -348,8 +489,6 @@ a { color: inherit; text-decoration: none; }
   animation: spin .7s linear infinite;
   margin: 0 auto;
 }
-
-@keyframes spin { to { transform: rotate(360deg); } }
 
 .form-privacy {
   display: flex;
@@ -363,6 +502,18 @@ a { color: inherit; text-decoration: none; }
 }
 
 .form-privacy svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ── BENEFÍCIOS ── */
 .section { padding: 88px 20px; }
@@ -413,14 +564,27 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--borda);
   border-radius: 18px;
   padding: 30px 26px;
-  transition: border-color .25s, transform .25s, box-shadow .25s;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(46,139,87,0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
 }
 
 .card:hover {
   border-color: rgba(46,139,87,0.5);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(46,139,87,0.15);
 }
+
+.card:hover::before { opacity: 1; }
 
 .card-icon {
   width: 48px;
@@ -432,6 +596,13 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   margin-bottom: 18px;
   color: var(--verde2);
+  transition: background .3s, transform .3s;
+  position: relative;
+}
+
+.card:hover .card-icon {
+  background: rgba(46,139,87,0.22);
+  transform: scale(1.1);
 }
 
 .card-icon svg { width: 24px; height: 24px; }
@@ -456,6 +627,18 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--borda);
   border-bottom: 1px solid var(--borda);
   padding: 88px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sobre::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(46,139,87,0.4), transparent);
 }
 
 .sobre-inner {
@@ -477,8 +660,9 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   flex-shrink: 0;
   border: 3px solid rgba(46,139,87,0.4);
-  box-shadow: 0 0 0 6px rgba(46,139,87,0.08);
+  box-shadow: 0 0 0 6px rgba(46,139,87,0.08), 0 0 40px rgba(46,139,87,0.15);
   color: rgba(255,255,255,0.6);
+  animation: pulse-glow 5s ease-in-out infinite;
 }
 
 .sobre-avatar svg { width: 56px; height: 56px; }
@@ -520,6 +704,10 @@ a { color: inherit; text-decoration: none; }
   font-weight: 900;
   color: var(--branco);
   letter-spacing: -.02em;
+  background: linear-gradient(135deg, #fff 0%, #4fd48a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .stat-label {
@@ -542,6 +730,28 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--borda);
   border-radius: 18px;
   padding: 30px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+
+.depo::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: 100px;
+  font-weight: 900;
+  color: rgba(46,139,87,0.06);
+  line-height: 1;
+  pointer-events: none;
+  font-family: Georgia, serif;
+}
+
+.depo:hover {
+  border-color: rgba(46,139,87,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
 }
 
 .depo-stars {
@@ -572,7 +782,8 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  border: 2px solid var(--borda);
+  border: 2px solid rgba(46,139,87,0.3);
+  box-shadow: 0 0 0 3px rgba(46,139,87,0.08);
 }
 
 .depo-avatar svg { width: 100%; height: 100%; display: block; }
@@ -608,6 +819,13 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ══════════════════ HERO ══════════════════ -->
 <section class="hero" id="topo">
+
+  <div class="aurora-wrap">
+    <div class="aurora-1"></div>
+    <div class="aurora-2"></div>
+    <div class="aurora-3"></div>
+  </div>
+  <div class="hero-grid"></div>
 
   <div class="badge">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -676,91 +894,93 @@ footer a:hover { text-decoration: underline; }
   </div>
 
   <!-- Formulário -->
-  <div class="form-wrap">
-    <div class="form-bar"></div>
-    <p class="form-label-top">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      Acesso 100% gratuito
-    </p>
-    <h2>Quero a planilha e quero assumir o controle</h2>
-    <p class="form-sub">Preencha abaixo. O download começa imediatamente.</p>
+  <div class="form-outer">
+    <div class="form-wrap">
+      <div class="form-bar"></div>
+      <p class="form-label-top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Acesso 100% gratuito
+      </p>
+      <h2>Quero a planilha e quero assumir o controle</h2>
+      <p class="form-sub">Preencha abaixo. O download começa imediatamente.</p>
 
-    <div class="field">
-      <label>Nome completo</label>
-      <input type="text" id="nome" placeholder="Ex: João Silva" autocomplete="name">
-      <span class="erro-msg">Informe seu nome completo.</span>
+      <div class="field">
+        <label>Nome completo</label>
+        <input type="text" id="nome" placeholder="Ex: João Silva" autocomplete="name">
+        <span class="erro-msg">Informe seu nome completo.</span>
+      </div>
+
+      <div class="field">
+        <label>WhatsApp (com DDD)</label>
+        <input type="tel" id="whatsapp" placeholder="(11) 99999-0000" autocomplete="tel">
+        <span class="erro-msg">Informe um WhatsApp válido com DDD.</span>
+      </div>
+
+      <div class="field">
+        <label>E-mail <span style="font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
+        <input type="email" id="email" placeholder="joao@email.com" autocomplete="email">
+      </div>
+
+      <button class="btn-submit" onclick="enviar()" id="btn">
+        <span id="btn-text">Baixar planilha grátis agora</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+
+      <p class="form-privacy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Seus dados são 100% seguros. Sem spam.
+      </p>
     </div>
-
-    <div class="field">
-      <label>WhatsApp (com DDD)</label>
-      <input type="tel" id="whatsapp" placeholder="(11) 99999-0000" autocomplete="tel">
-      <span class="erro-msg">Informe um WhatsApp válido com DDD.</span>
-    </div>
-
-    <div class="field">
-      <label>E-mail <span style="font-weight:400;text-transform:none;font-size:11px">(opcional)</span></label>
-      <input type="email" id="email" placeholder="joao@email.com" autocomplete="email">
-    </div>
-
-    <button class="btn-submit" onclick="enviar()" id="btn">
-      <span id="btn-text">Baixar planilha grátis agora</span>
-      <div class="spinner" id="spinner"></div>
-    </button>
-
-    <p class="form-privacy">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Seus dados são 100% seguros. Sem spam.
-    </p>
   </div>
 
 </section>
 
 <!-- ══════════════════ BENEFÍCIOS ══════════════════ -->
 <section class="section" style="background: var(--bg2); border-top: 1px solid var(--borda);">
-  <div class="section-tag">
+  <div class="section-tag reveal">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
     O que está dentro da planilha
   </div>
-  <h2 class="section-title">Tudo que você precisa.<br>Nada que você não usa.</h2>
-  <p class="section-sub">Simples o suficiente para começar hoje. Completo o suficiente para transformar suas finanças.</p>
+  <h2 class="section-title reveal">Tudo que você precisa.<br>Nada que você não usa.</h2>
+  <p class="section-sub reveal">Simples o suficiente para começar hoje. Completo o suficiente para transformar suas finanças.</p>
 
   <div class="grid-6">
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       </div>
       <h3>Controle de entradas e saídas</h3>
       <p>Registre tudo que entra e sai do seu bolso. Sem mistério no fim do mês.</p>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       </div>
       <h3>Planejamento mensal</h3>
       <p>Preveja seus gastos antes do mês começar. Chega de surpresa no dia 20.</p>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       </div>
       <h3>Metas financeiras</h3>
       <p>Defina onde quer chegar e acompanhe o progresso semana a semana.</p>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
       </div>
       <h3>Controle de dívidas</h3>
       <p>Mapeie parcelas, vencimentos e quanto falta para quitar cada dívida.</p>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
       <h3>Reserva de emergência</h3>
       <p>Acompanhe quanto já guardou e quanto falta para sua proteção.</p>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div class="card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
       </div>
@@ -773,10 +993,10 @@ footer a:hover { text-decoration: underline; }
 <!-- ══════════════════ SOBRE ══════════════════ -->
 <section class="sobre">
   <div class="sobre-inner">
-    <div class="sobre-avatar">
+    <div class="sobre-avatar reveal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     </div>
-    <div>
+    <div class="reveal">
       <div class="sobre-nome">Adriano Santos</div>
       <div class="sobre-cargo">Planejador Financeiro · @adrianosantos_pf</div>
       <p class="sobre-texto">
@@ -785,15 +1005,15 @@ footer a:hover { text-decoration: underline; }
       </p>
       <div class="sobre-stats">
         <div>
-          <div class="stat-num">9.000+</div>
+          <div class="stat-num" data-target="9000" data-suffix="+">0</div>
           <div class="stat-label">brasileiros atendidos</div>
         </div>
         <div>
-          <div class="stat-num">100%</div>
+          <div class="stat-num" data-target="100" data-suffix="%">0</div>
           <div class="stat-label">gratuito</div>
         </div>
         <div>
-          <div class="stat-num">5 min</div>
+          <div class="stat-num" data-target="5" data-suffix=" min">0</div>
           <div class="stat-label">para começar a usar</div>
         </div>
       </div>
@@ -803,17 +1023,16 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ══════════════════ DEPOIMENTOS ══════════════════ -->
 <section class="section">
-  <div class="section-tag">
+  <div class="section-tag reveal">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
     Quem já usou, aprovou
   </div>
-  <h2 class="section-title">Resultados reais de pessoas reais</h2>
-  <p class="section-sub">Sem promessa de enriquecimento rápido. Só controle, clareza e resultado.</p>
+  <h2 class="section-title reveal">Resultados reais de pessoas reais</h2>
+  <p class="section-sub reveal">Sem promessa de enriquecimento rápido. Só controle, clareza e resultado.</p>
 
   <div class="grid-3">
 
-    <!-- Depoimento 1 — Mariana, 5 estrelas, SP capital -->
-    <div class="depo">
+    <div class="depo reveal">
       <div class="depo-stars">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -833,14 +1052,12 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Depoimento 2 — Ricardo, 4.5 estrelas, Guarulhos -->
-    <div class="depo">
+    <div class="depo reveal">
       <div class="depo-stars">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <!-- meia estrela -->
         <svg viewBox="0 0 24 24">
           <defs>
             <linearGradient id="half">
@@ -863,8 +1080,7 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Depoimento 3 — Fernanda, 5 estrelas, Campinas -->
-    <div class="depo">
+    <div class="depo reveal">
       <div class="depo-stars">
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -896,6 +1112,7 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <script>
+/* ── Máscara WhatsApp ── */
 document.getElementById('whatsapp').addEventListener('input', function(e) {
   let v = e.target.value.replace(/\D/g, '').slice(0, 11);
   if (v.length >= 2) v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
@@ -903,6 +1120,51 @@ document.getElementById('whatsapp').addEventListener('input', function(e) {
   e.target.value = v;
 });
 
+/* ── Scroll Reveal ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── Contador animado ── */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const step = 16;
+  const increment = target / (duration / step);
+  let current = 0;
+
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = (target >= 1000
+      ? Math.floor(current).toLocaleString('pt-BR')
+      : Math.floor(current)) + suffix;
+  }, step);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+
+/* ── Envio do formulário ── */
 async function enviar() {
   const nome     = document.getElementById('nome').value.trim();
   const whatsapp = document.getElementById('whatsapp').value;
@@ -916,19 +1178,11 @@ async function enviar() {
   document.getElementById('whatsapp').classList.remove('erro');
 
   let valido = true;
-
-  if (!nome || nome.length < 3) {
-    document.getElementById('nome').classList.add('erro');
-    valido = false;
-  }
-  if (wNum.length < 10) {
-    document.getElementById('whatsapp').classList.add('erro');
-    valido = false;
-  }
-
+  if (!nome || nome.length < 3) { document.getElementById('nome').classList.add('erro'); valido = false; }
+  if (wNum.length < 10) { document.getElementById('whatsapp').classList.add('erro'); valido = false; }
   if (!valido) return;
 
-  btn.disabled   = true;
+  btn.disabled = true;
   btnText.style.display = 'none';
   spinner.style.display = 'block';
 
@@ -937,9 +1191,9 @@ async function enviar() {
     nome,
     whatsapp,
     email,
-    origem:  'Instagram Bio',
-    data:    agora.toLocaleDateString('pt-BR'),
-    horario: agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+    origem:    'Instagram Bio',
+    data:      agora.toLocaleDateString('pt-BR'),
+    horario:   agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
     timestamp: agora.toISOString()
   };
 
@@ -952,7 +1206,6 @@ async function enviar() {
   } catch (e) {}
 
   await new Promise(r => setTimeout(r, 1200));
-
   window.location.href = '/obrigado?nome=' + encodeURIComponent(nome.split(' ')[0]);
 }
 </script>
