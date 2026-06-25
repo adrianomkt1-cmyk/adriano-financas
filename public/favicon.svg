@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fundo arredondado -->
+  <rect width="32" height="32" rx="8" fill="#0C1810"/>
+
+  <!-- Borda sutil verde -->
+  <rect width="32" height="32" rx="8" fill="none" stroke="#2E8B57" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Símbolo: cifrão estilizado com linha ascendente (crescimento financeiro) -->
+  <!-- Linha vertical do cifrão -->
+  <line x1="16" y1="6" x2="16" y2="26" stroke="#2E8B57" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- S do cifrão -->
+  <path d="M20.5 10.5 C20.5 10.5 19 9 16 9 C13 9 11.5 10.5 11.5 12 C11.5 13.5 13 14.5 16 15.5 C19 16.5 20.5 17.5 20.5 19.5 C20.5 21.5 19 23 16 23 C13 23 11.5 21.5 11.5 21.5"
+        fill="none" stroke="#C8960C" stroke-width="2" stroke-linecap="round"/>
+</svg>
